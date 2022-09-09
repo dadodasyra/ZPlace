@@ -31,3 +31,12 @@ Du mal à trouver le "Bearer token" ? Voici comment le trouver :
 
 # Disclaimer
 S'il vous plait n'utilisez pas ce bot pour détruire mais utilisez-le pour faire de jolis trucs. Merci.
+
+## Utilisé pour :
+Pour figurer dans cette catégorie ouvrez une issue avec un screen (en passant par l'image png transparente expliqué dans la partie ["Format image"](#format-image)) de la partie que vous avez créé avec le bot ainsi que le prix que ça vous a couté.
+
+~350 pour le H (logo de [Histeria](https://histeria.fr))
+![dadodasyra](https://cdn.discordapp.com/attachments/695242700995428392/1017897515955257354/1662754264371.png)
+
+~100 pour le "histeria.fr" (de [Histeria](https://histeria.fr))
+![dadodasyra](https://cdn.discordapp.com/attachments/695242700995428392/1017898456389521478/unknown.png)
