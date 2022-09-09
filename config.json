@@ -1,0 +1,10 @@
+{
+  "token": "",
+  "__token": "This is the bearer token, check ReadMe to know how to found it",
+  "placing": false,
+  "__placing": "If false it will only check the price of pixels, it should be use to estimate total price printed at the end of the lines",
+  "imagePath": "zplace.png",
+  "__imagePath": "The image to print, with the extension .png, jpg is not supported",
+  "fixedColor": false,
+  "__fixedColor": "It will get a dynamic color if false, may be not very accurate"
+}
