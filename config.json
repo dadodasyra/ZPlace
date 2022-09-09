@@ -6,5 +6,7 @@
   "imagePath": "zplace.png",
   "__imagePath": "The image to print, with the extension .png, jpg is not supported",
   "fixedColor": false,
-  "__fixedColor": "It will get a dynamic color if false, may be not very accurate"
+  "__fixedColor": "It will get a dynamic color if false, may be not very accurate",
+  "currentImage": "1662757015040.png",
+  "__currentImage": "This can be used to economize the number of pixels change because it will verify if the pixel is already in the right color, if you having trouble with it remove it and leave it blank. Warning if enable it can eat your RAM and take long time to load"
 }
