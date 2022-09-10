@@ -138,11 +138,12 @@ function parsingPixelResponse(xhr, width, imgData, colorsRGB)
     let rgb = {r: imgData[idx], g: imgData[idx + 1], b: imgData[idx + 2]};
     let closestColorIndex = getClosestColorIndex(idx, colorsRGB, rgb);
     let currentColor = currentColorMapping[idx];
+    let oldColorIndex = getClosestColorIndex(idx, colorsRGB, currentColor);
 
-    if (!currentColor || (rgb["r"] !== currentColor["r"] && rgb["g"] !== currentColor["g"] && rgb["b"] !== currentColor["b"])) {
+    if (closestColorIndex !== oldColorIndex) {
         totalPrice += level;
 
-        console.log("Placing pixel at x " + x + " y " + y + " with level " + level + " and color " + closestColorIndex + ", old color, "+getClosestColorIndex(idx, colorsRGB, currentColor)+" current price : " + totalPrice);
+        console.log("Placing pixel at x " + x + " y " + y + " with level " + level + " and color " + closestColorIndex + ", old color, "+oldColorIndex+" current price : " + totalPrice);
         data["variables"]["pixels"] = [{
             "x": x,
             "y": y,
