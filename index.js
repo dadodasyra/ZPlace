@@ -142,7 +142,7 @@ function parsingPixelResponse(xhr, width, imgData, colorsRGB)
     if (!currentColor || (rgb["r"] !== currentColor["r"] && rgb["g"] !== currentColor["g"] && rgb["b"] !== currentColor["b"])) {
         totalPrice += level;
 
-        console.log("Placing pixel at x " + x + " y " + y + " with level " + level + " and color " + closestColorIndex + ", current price : " + totalPrice);
+        console.log("Placing pixel at x " + x + " y " + y + " with level " + level + " and color " + closestColorIndex + ", old color, "+getClosestColorIndex(idx, colorsRGB, currentColor)+" current price : " + totalPrice);
         data["variables"]["pixels"] = [{
             "x": x,
             "y": y,
@@ -183,7 +183,7 @@ function getClosestColorIndex(idx, colorsRGB, rgb) {
     //find closestColor index in colorsRGB which contains {{r,g,b}}
     return colorsRGB.findIndex((color) => {
         return color.r === closestColor.r && color.g === closestColor.g && color.b === closestColor.b;
-    }) + 1;
+    });
 }
 
 function getDistance(color1, r, g, b) {
