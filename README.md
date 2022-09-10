@@ -14,9 +14,9 @@ node index.js
 ```
 
 ## Format image
-L'image doit faire du 500x500 pixels sur fond transparent en format png. 
+L'image doit faire du 700x500 pixels sur fond transparent en format png. 
 Pour vous aider à faire votre calque vous pouvez récupérer la "map" actuel du zPlace en cherchant le packet "full" envoyé lors du chargement de la page. 
-Exemple : https://zevent-cdn.mog.gg/zplace/full/1662754264371.png
+Exemple : https://zevent-cdn.mog.gg/zplace/full/1662809627697.png (update le 10/09 à 13:34)
 Les couleurs sont automatiquement adaptés à celles disponibles sur le zPlace (bêta).
 
 ## Bearer Token
