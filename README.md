@@ -14,9 +14,9 @@ node index.js
 ```
 
 ## Format image
-L'image doit faire du 700x500 pixels sur fond transparent en format png. 
+L'image doit faire du 700x700 pixels sur fond transparent en format png. 
 Pour vous aider à faire votre calque vous pouvez récupérer la "map" actuel du zPlace en cherchant le packet "full" envoyé lors du chargement de la page. 
-Exemple : https://zevent-cdn.mog.gg/zplace/full/1662809627697.png (update le 10/09 à 13:34)
+Exemple : https://zevent-cdn.mog.gg/zplace/full/1662854964732.png (update le 11/09 à 02:10)
 Les couleurs sont automatiquement adaptés à celles disponibles sur le zPlace (bêta).
 
 ## Bearer Token
@@ -40,3 +40,6 @@ Pour figurer dans cette catégorie ouvrez une issue avec un screen (en passant p
 
 ~100 pour le "histeria.fr" (de [Histeria](https://histeria.fr))
 ![dadodasyra](https://cdn.discordapp.com/attachments/695242700995428392/1017898456389521478/unknown.png)
+
+~400 pour le H (logo de [Histeria](https://histeria.fr)) version plus gros et bonne couleur
+![dadodasyra](https://cdn.discordapp.com/attachments/1018134205131145237/1018311768054960138/map.png)
