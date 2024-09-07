@@ -30,10 +30,6 @@ fs.createReadStream(config.imagePath)
 
 let currentColorMapping = [];
 
-async function sleep(number) {
-    return new Promise(resolve => setTimeout(resolve, number));
-}
-
 function parseColors(imgData, width, height)
 {
     let xhrColor = new XMLHttpRequest();
@@ -154,25 +150,30 @@ function parsingPixelResponse(xhr, width, imgData, colorsRGB)
     } else console.log("Pixel at x " + x + " y " + y + " is already placed with color " + closestColorIndex+", current price : " + totalPrice);
 }
 
-async function loadMap()
-{
-    let colorMap = [];
+async function loadMap() {
+    return new Promise((resolve, reject) => {
+        let colorMap = [];
 
-    await fs.createReadStream(config.currentImage)
-        .pipe(new PNG())
-        .on('parsed', function () {
-            console.log("Parsing global image")
-            for (let y = 0; y < this.height; y++) {
-                for (let x = 0; x < this.width; x++) {
-                    if (x % 100 === 0 && y % 100 === 0 && y !== 0) console.log("Parsing global image : x" + x + " y" + y)
-                    let idx = (this.width * y + x) << 2;
+        console.log("Parsing global image");
+        fs.createReadStream(config.currentImage)
+            .pipe(new PNG())
+            .on('parsed', function () {
+                for (let y = 0; y < this.height; y++) {
+                    for (let x = 0; x < this.width; x++) {
+                        if (x % 100 === 0 && y % 100 === 0 && y !== 0) console.log("Parsing global image : x" + x + " y" + y);
+                        let idx = (this.width * y + x) << 2;
 
-                    colorMap[idx] = {r: this.data[idx], g: this.data[idx + 1], b: this.data[idx + 2]};
+                        colorMap[idx] = {r: this.data[idx], g: this.data[idx + 1], b: this.data[idx + 2]};
+                    }
                 }
-            }
-            console.log("Parsing global image done")
-        });
-    return colorMap
+                console.log("Parsing global image done");
+                resolve(colorMap);
+            })
+            .on('error', function (err) {
+                console.log(err);
+                reject(err);
+            });
+    });
 }
 
 function getClosestColorIndex(idx, colorsRGB, rgb) {
