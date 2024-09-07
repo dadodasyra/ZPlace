@@ -91,7 +91,7 @@ function askingPixels(height, width, imgData, colorsRGB)
         for (let x = 0; x < width; x++) {
             let idx = (width * y + x) << 2;
 
-            if (imgData[idx + 3] !== 0) { //pixel is not transparent
+            if (imgData[idx + 3] !== 0) { // pixel is not transparent and not white
                 let xhr = new XMLHttpRequest();
                 xhr.open("POST", url);
                 xhr.setRequestHeader("Accept", "application/json");
@@ -168,7 +168,11 @@ async function loadMap() {
                         if (x % 100 === 0 && y % 100 === 0 && y !== 0) console.log("Parsing global image : x" + x + " y" + y);
                         let idx = (this.width * y + x) << 2;
 
-                        colorMap[idx] = {r: this.data[idx], g: this.data[idx + 1], b: this.data[idx + 2]};
+                        if (this.data[idx + 3] === 0) { // Check if pixel is transparent
+                            colorMap[idx] = { r: 255, g: 255, b: 255 }; // Set default color to white
+                        } else {
+                            colorMap[idx] = { r: this.data[idx], g: this.data[idx + 1], b: this.data[idx + 2] };
+                        }
                     }
                 }
                 console.log("Parsing global image done");
