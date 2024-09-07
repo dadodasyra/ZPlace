@@ -6,6 +6,5 @@
   "imagePath": "zplace.png",
   "__imagePath": "The image to print, with the extension .png, jpg is not supported",
   "currentImage": "map.png",
-  "__currentImage": "This can be used to economize the number of pixels change because it will verify if the pixel is already in the right color, if you having trouble with it remove it and leave it blank. Warning if enable it can eat your RAM and take long time to load",
-  "___currentImage": "map.png is automatically fetched from the server, if you want to use your own image, you can put it in the same folder as the script and change the name here"
+  "__currentImage": "Don't change it unless you know what you're doing. It will be automatically fetched from the official ZPlace."
 }
