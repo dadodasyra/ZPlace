@@ -62,8 +62,13 @@ function parseColors(imgData, width, height)
 
                             await request(url, async function () {
                                 console.log("Map downloaded");
-                                currentColorMapping = await loadMap();
-                                console.log("Map loaded with " + currentColorMapping.length + " pixels");
+                                const { colorMap, dimensions } = await loadMap();
+                                currentColorMapping = colorMap;
+                                console.log("Map loaded with " + colorMap.length + " pixels");
+                                if (dimensions.width !== width || dimensions.height !== height) {
+                                    console.log("The map dimensions are not the same as the image dimensions");
+                                    process.exit(1);
+                                }
 
                                 askingPixels(height, width, imgData, colorsRGB);
                             }).pipe(await fs.createWriteStream("map.png"));
@@ -167,7 +172,7 @@ async function loadMap() {
                     }
                 }
                 console.log("Parsing global image done");
-                resolve(colorMap);
+                resolve({ colorMap: colorMap, dimensions: { width: this.width, height: this.height } });
             })
             .on('error', function (err) {
                 console.log(err);
