@@ -19,7 +19,7 @@ node index.js
 L'image doit faire du 500x500 pixels (taille de la map) sur fond transparent en format png. 
 Pour récupérer l'image de la map actuel en PNG le script vous donnera un lien pour la télécharger au démarrage.
 
-Exemple : https://zevent-cdn.mog.gg/zplace-cdn.mog.gg/full/1725711406291.png (update le 07/09/24 à 14:15)
+Exemple : https://zevent-cdn.mog.gg/zplace-cdn.mog.gg/full/1725797849773.png (update le 08/09/24 à 14:15)
 
 Les couleurs sont automatiquement adaptés à celles disponibles sur le zPlace (bêta).
 
@@ -35,6 +35,9 @@ Du mal à trouver le token d'authentification ? Voici comment le trouver :
 
 # Disclaimer
 S'il vous plait n'utilisez pas ce bot pour détruire mais utilisez-le pour faire de jolis trucs. Merci.
+
+## Utility tool
+Le fichier utility.js s'execute à part pour permettre la conversion du fichier "input.png" à "output.png" en prenant la couleur de la palette la plus proche.
 
 ## Utilisé pour
 Pour figurer dans cette catégorie ouvrez une issue avec un screen (en passant par l'image png transparente expliqué dans la partie ["Format image"](#format-image)) de la partie que vous avez créé avec le bot ainsi que le prix que ça vous a couté.
