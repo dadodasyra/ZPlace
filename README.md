@@ -19,7 +19,7 @@ node index.js
 L'image doit faire du 500x500 pixels (taille de la map) sur fond transparent en format png. 
 Pour récupérer l'image de la map actuel en PNG le script vous donnera un lien pour la télécharger au démarrage.
 
-Exemple : https://zevent-cdn.mog.gg/zplace-cdn.mog.gg/full/1725797849773.png (update le 08/09/24 à 14:15)
+Exemple : https://zevent-cdn.mog.gg/zplace-cdn.mog.gg/full/1725823507051.png (update le 08/09/24 à 21:00)
 
 Les couleurs sont automatiquement adaptés à celles disponibles sur le zPlace (bêta).
 
