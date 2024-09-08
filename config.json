@@ -10,9 +10,9 @@
 
   "timeInterval": {
     "activate": true,
-    "minimum": 300,
+    "minimum": 20,
     "__minimum": "Minimum time to wait between pixels, in ms",
-    "maximum": 500,
+    "maximum": 50,
     "__maximum": "Maximum time to wait between pixels, in ms"
   }
 }

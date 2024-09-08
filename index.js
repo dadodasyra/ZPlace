@@ -70,7 +70,7 @@ function parseColors(imgData, width, height)
                                     process.exit(1);
                                 }
 
-                                askingPixels(height, width, imgData, colorsRGB);
+                                await askingPixels(height, width, imgData, colorsRGB);
                             }).pipe(await fs.createWriteStream("map.png"));
                         });
                     }
@@ -79,7 +79,7 @@ function parseColors(imgData, width, height)
                 currentColorMapping = await loadMap();
                 console.log("Map loaded with " + currentColorMapping.length + " pixels");
 
-                askingPixels(height, width, imgData, colorsRGB);
+                await askingPixels(height, width, imgData, colorsRGB);
             }
         }
     };
