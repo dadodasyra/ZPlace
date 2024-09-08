@@ -6,5 +6,13 @@
   "imagePath": "zplace.png",
   "__imagePath": "The image to print, with the extension .png, jpg is not supported",
   "currentImage": "map.png",
-  "__currentImage": "Don't change it unless you know what you're doing. It will be automatically fetched from the official ZPlace."
+  "__currentImage": "Don't change it unless you know what you're doing. It will be automatically fetched from the official ZPlace.",
+
+  "timeInterval": {
+    "activate": true,
+    "minimum": 300,
+    "__minimum": "Minimum time to wait between pixels, in ms",
+    "maximum": 500,
+    "__maximum": "Maximum time to wait between pixels, in ms"
+  }
 }

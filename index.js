@@ -85,8 +85,21 @@ function parseColors(imgData, width, height)
     };
 }
 
-function askingPixels(height, width, imgData, colorsRGB)
-{
+async function askingPixels(height, width, imgData, colorsRGB) {
+    let processedPixels = 0;
+    let startTime = Date.now();  // Track when the process started
+    let totalNonTransparentPixels = 0;
+
+    // Count non-transparent pixels before processing
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            let idx = (width * y + x) << 2;
+            if (imgData[idx + 3] !== 0) {  // Pixel is not transparent
+                totalNonTransparentPixels++;
+            }
+        }
+    }
+
     for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
             let idx = (width * y + x) << 2;
@@ -109,10 +122,44 @@ function askingPixels(height, width, imgData, colorsRGB)
                     "query": "query getPixelLevel($pixel: PixelUpgradeInput!) {\n  getPixelLevel(pixel: $pixel) {\n    x\n    y\n    level\n    coloredBy\n    upgradedBy\n    __typename\n  }\n}"
                 };
                 xhr.send(JSON.stringify(pixelLevelData));
+
+                // Update processed pixels count
+                processedPixels++;
+                let percentProcessed = ((processedPixels / totalNonTransparentPixels) * 100).toFixed(2);
+                let elapsedTime = Date.now() - startTime;
+                let avgTimePerPixel = elapsedTime / processedPixels;
+                let remainingPixels = totalNonTransparentPixels - processedPixels;
+                let eta = Math.round((avgTimePerPixel * remainingPixels) / 1000);  // in seconds
+
+                console.log(`Processed: ${percentProcessed}% | ETA: ${formatTime(eta)}`);
+
+                // Wait based on config delay
+                let timeInterval = config.timeInterval;
+                if (timeInterval.activate && timeInterval.minimum > -1) { //Timeinterval is set
+                    await new Promise(resolve =>
+                        setTimeout(resolve, Math.floor(Math.random() * (config.timeInterval.maximum - config.timeInterval.minimum + 1)) + config.timeInterval.minimum)
+                    );
+                }
             }
         }
     }
+}
 
+function formatTime(seconds) {
+    let hrs = Math.floor(seconds / 3600);
+    let mins = Math.floor((seconds % 3600) / 60);
+    let secs = seconds % 60;
+
+    let formattedTime = "";
+    if (hrs > 0) {
+        formattedTime += `${hrs} hour${hrs !== 1 ? 's' : ''}, `;
+    }
+    if (mins > 0 || hrs > 0) {
+        formattedTime += `${mins} minute${mins !== 1 ? 's' : ''}, `;
+    }
+    formattedTime += `${secs} second${secs !== 1 ? 's' : ''}`;
+
+    return formattedTime;
 }
 
 function parsingPixelResponse(xhr, width, imgData, colorsRGB)
@@ -144,7 +191,7 @@ function parsingPixelResponse(xhr, width, imgData, colorsRGB)
     if (closestColorIndex !== oldColorIndex) {
         totalPrice += level;
 
-        console.log("Placing pixel at x " + x + " y " + y + " with level " + level + " and color " + closestColorIndex + ", old color, "+oldColorIndex+" current price : " + totalPrice);
+        console.log("Placing pixel at x" + x + " y" + y + " with level " + level + " and color " + closestColorIndex + ", old color "+oldColorIndex+", current price : " + totalPrice);
         data["variables"]["pixels"] = [{
             "x": x,
             "y": y,
