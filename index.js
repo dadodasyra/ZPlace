@@ -7,6 +7,7 @@ const config = require('./config.json');
 
 const url = "https://place-api.zevent.fr/graphql";
 let totalPrice = 0;
+let placedPixels = []; // Array to store placed pixels
 
 let data = {
     'operationName': "setPixels",
@@ -198,6 +199,7 @@ function parsingPixelResponse(xhr, width, imgData, colorsRGB)
             "color": closestColorIndex,
             "currentLevel": level
         }];
+        placedPixels.push({ x, y, color: closestColorIndex, level }); // Add placed pixel to the list
         if (config.placing) xmlHttpRequest.send(JSON.stringify(data));
     } else console.log("Pixel at x " + x + " y " + y + " is already placed with color " + closestColorIndex+", current price : " + totalPrice);
 }
@@ -256,3 +258,7 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16)
     } : null;
 }
+
+process.on('exit', () => {
+    console.log("List of placed pixels:", placedPixels);
+});
